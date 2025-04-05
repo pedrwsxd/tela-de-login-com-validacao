@@ -6,6 +6,7 @@ import * as yup from "yup";
 
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
+import { useEffect } from "react";
 
 const schema = yup
   .object({
@@ -23,10 +24,15 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm<IFormLogin>({
     resolver: yupResolver(schema),
-    mode: "onBlur",
+    mode: "onChange",
     defaultValues,
     reValidateMode: "onChange",
   });
+
+  useEffect(() => {
+    console.log("O estado de isValid mudou:", isValid);
+    // Aqui você pode adicionar lógica adicional
+  }, [isValid]);
 
   return (
     <Container>
@@ -49,7 +55,7 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button disabled={!isValid} title="Entrar"/>
         </Column>
       </LoginContainer>
     </Container>

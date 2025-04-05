@@ -10,8 +10,12 @@ export const ButtonContainer = styled.button`
     border: 1px solid #81259D;
     border-radius: 21px;
 
+    &:disabled {
+        background-color: #D3D3D3;
+    }
+
     &:hover {
         opacity: 0.6;
         cursor:pointer;
     }
-`
+` as React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>;
