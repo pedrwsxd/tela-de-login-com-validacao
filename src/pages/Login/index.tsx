@@ -29,11 +29,6 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
-  useEffect(() => {
-    console.log("O estado de isValid mudou:", isValid);
-    // Aqui você pode adicionar lógica adicional
-  }, [isValid]);
-
   return (
     <Container>
       <LoginContainer>
